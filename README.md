@@ -61,3 +61,32 @@ ni index.js
 Instead of using the node command to run the application, you'll use nodemon, a tool that monitors your application and automatically restarts your server when source code changes. With node, you'd have to restart the server manually when changes are made.
 
 Install nodemon as a dependency of your Node.js application:
+```
+npm install --save-dev nodemon
+
+```
+Next, replace the test script under the scripts property of package.json with the following dev script:
+
+```
+{
+  "name": "toody-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
+```
+
+The dev NPM script maps to the nodemon index.js command. nodemon takes as argument the entry point of an application and executes it. To run dev or any command from a package's scripts object use npm run:
+
+```
+npm run dev
+```
