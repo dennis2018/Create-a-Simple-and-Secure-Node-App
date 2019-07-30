@@ -22,3 +22,29 @@ Using server-side rendering (SSR), the web app will consist of two views: a publ
 ## Bootstrapping a Node.js Project
 - Create a project directory named toody-portal to hold your application, and make that your working directory:
 
+```
+mkdir  toody-portal
+cd toody-portal
+```
+
+Use the npm init -y command to create a package.json file for your application:
+```
+npm init -y
+```
+
+By passing it the -y flag as an argument, the file is created with sensible defaults:
+
+```
+{
+  "name": "toody-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
