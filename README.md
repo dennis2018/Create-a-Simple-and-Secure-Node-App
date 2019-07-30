@@ -177,3 +177,34 @@ html
     div#root
       block layout-content
 ```
+This template uses the title variable to render the document title of a page. This variable value will be passed from the server to the template.
+
+Next, create an index.pug file under the same directory:
+
+```
+# For macOS/Linux use:
+touch views/index.pug
+# For Windows PowerShell use:
+ni views/index.pug
+```   
+Open index.pug and add the following content to it:
+
+```
+extends layout
+
+block layout-content
+  div.View
+    h1.Banner toody
+    div.Message
+      div.Title
+        h3 Making the Best
+        h1 Food For Devs
+      span.Details Access the toody Team Portal
+    div.NavButtons
+      if isAuthenticated
+        a(href="/user")
+          div.NavButton Just dive in!
+      else
+        a(href="/login")
+          div.NavButton Log in
+```
