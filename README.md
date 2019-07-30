@@ -120,3 +120,29 @@ app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });
 ```
+The above index.js script imports the express module which exports as default a function that creates an Express application. This function is executed and the returned Express application is stored in a variable named app. The script defines a port variable that assumes the value of a defined environmental variable, process.env.PORT, or 8000. Next, it creates a simple route that handles GET HTTP requests made to the root path, /, and replies with a string. Finally, the Express app is set up to listen for HTTP requests in the port previously defined.
+If the app is not running, run the app to test this script:
+```
+npm run dev
+```
+nodemon should output something similar to the following in the terminal:
+
+```
+[nodemon] restarting due to changes...
+[nodemon] starting `node index.js`
+Listening to requests on http://localhost:8000
+```
+Open any browser and visit http://localhost:8000/ to see the app in action. If everything is running successfully, the browser should display the string toody: Food For Devs on a plain page.
+
+If you want to learn more details about Express routing, please refer to the Express "Basic routing" document from the official docs.
+
+With a basic web app in place, it's time to create views using Pug.
+
+# Using Pug template engine to Create Express Views
+To create rich web apps, you need dynamic templates that can render UI elements conditionally and can be populated with values from the server. This is something that cannot be achieved with static HTML files. Instead, a template engine like Pug is needed. Pug templates offer conditional rendering, template hydration, template inheritance to compose pages, and a terse syntax that resembles writing Python code.
+
+Express needs to be configured to use Pug as a template engine and with a location to look for templates. To install pug as a project dependency without stopping the running server, open a new tab or window and execute the following command:
+
+```
+npm install pug
+```
