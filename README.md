@@ -208,3 +208,35 @@ block layout-content
         a(href="/login")
           div.NavButton Log in
 ```
+Naming conventions for CSS classes vary by preference. It's common to see kebab-case used to name CSS classes. However, a few other designers and developers use PascalCase. As long as you are consistent on applying your conventions, use the casing of your preference. Personally, I find PascalCase to be more readable and easier to copy by double-clicking. When using self-contained components, I also find it easier to map the component name to the class name that modifies it.
+
+Pug templates don't use HTML tags, instead, they simply use the names of HTML elements and whitespace to define the structure of a template. Attributes are placed next to an element name inside the parenthesis, closely resembling the structure of a function call. The content of an element can go next to the element name in the same line or indented below. Classes are defined using a .classname syntax while IDs are defined using a #idname syntax.
+
+Visit the Getting Started page of the Pug documents for a complete overview of how Pug works.
+
+The content of the div.NavButtons container is rendered based on the value of the isAuthenticated variable. This value will also be provided to the template by route controllers, allowing it to render the correct button based on the authentication status of a user.
+
+To connect the templates with the controllers, configure Express to use Pug as the view template engine of the application, use the views subdirectory as the views source folder, and render a view template as the response of a route controller.
+
+Open index.js and update it like so:
+
+```
+// index.js
+
+const path = require("path");
+const express = require("express");
+
+const app = express();
+const port = process.env.PORT || "8000";
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+app.get("/", (req, res) => {
+  res.render("index", { title: "Home" });
+});
+
+app.listen(port, () => {
+  console.log(`Listening to requests on http://localhost:${port}`);
+});
+```
