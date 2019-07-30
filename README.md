@@ -27,12 +27,12 @@ mkdir  toody-portal
 cd toody-portal
 ```
 
-Use the npm init -y command to create a package.json file for your application:
+- Use the npm init -y command to create a package.json file for your application:
 ```
 npm init -y
 ```
 
-By passing it the -y flag as an argument, the file is created with sensible defaults:
+- By passing it the -y flag as an argument, the file is created with sensible defaults:
 
 ```
 {
