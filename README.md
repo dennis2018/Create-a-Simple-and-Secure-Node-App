@@ -48,3 +48,16 @@ npm init -y
   "license": "ISC"
 }
 ```
+
+The main property represents the primary entry point to your application, a file named index.js. Create that file:
+
+```
+# For macOS/Linux use:
+touch index.js
+# For Windows PowerShell use:
+ni index.js
+```
+## Creating an NPM script to run the application
+Instead of using the node command to run the application, you'll use nodemon, a tool that monitors your application and automatically restarts your server when source code changes. With node, you'd have to restart the server manually when changes are made.
+
+Install nodemon as a dependency of your Node.js application:
