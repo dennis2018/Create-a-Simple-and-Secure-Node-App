@@ -16,3 +16,5 @@ Using server-side rendering (SSR), the web app will consist of two views: a publ
 - A terminal app for MacOS and Linux or PowerShell for Windows.
 
 - Node.js v8+ and a Node.js package manager installed locally.
+
+### To install Node.js and NPM, use any of the official Node.js installers provided for your operating system.
