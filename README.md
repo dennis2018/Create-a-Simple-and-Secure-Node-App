@@ -90,3 +90,7 @@ The dev NPM script maps to the nodemon index.js command. nodemon takes as argume
 ```
 npm run dev
 ```
+
+## You can delete the test NPM script as testing Node.js applications is out of the scope of this article.
+
+# Integrating Express application framework with Node.js
