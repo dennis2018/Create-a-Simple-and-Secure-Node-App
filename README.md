@@ -146,3 +146,34 @@ Express needs to be configured to use Pug as a template engine and with a locati
 ```
 npm install pug
 ```
+Next, create a directory named views under the project directory:
+
+```
+mkdir views
+```
+
+To optimize template creation, you'll create a layout to encapsulate the top-level HTML structure of a page. This layout will be extended by other templates to render a complete and valid HTML page. In Pug, this is known as template inheritance and it's done by using the block and extends artifacts.
+
+Under the views directory, create a layout.pug file:
+```
+# For macOS/Linux use:
+touch views/layout.pug
+# For Windows PowerShell use:
+ni views/layout.pug
+```
+Add the following content to it:
+
+```
+block variables
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    link(rel="shortcut icon", href="/favicon.ico")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="theme-color", content="#000000")
+    title #{title} | WHATABYTE
+  body
+    div#root
+      block layout-content
+```
