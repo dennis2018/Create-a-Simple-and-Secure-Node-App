@@ -94,3 +94,29 @@ npm run dev
 ## You can delete the test NPM script as testing Node.js applications is out of the scope of this article.
 
 # Integrating Express application framework with Node.js
+To use the Express framework in your application, install it as a project dependency:
+
+```
+npm install express
+```
+### Where is the --save flag? By default with npm v5.0+, npm install adds the module to the dependencies list in the package.json file. Earlier versions of npm require the --save flag to be specified explicitly.
+
+With express installed, open index.js and populate it with the following content to create a simple Express app:
+
+```
+// index.js
+
+const path = require("path");
+const express = require("express");
+
+const app = express();
+const port = process.env.PORT || "8000";
+
+app.get("/", (req, res) => {
+  res.status(200).send("toody: Food For Devs");
+});
+
+app.listen(port, () => {
+  console.log(`Listening to requests on http://localhost:${port}`);
+});
+```
