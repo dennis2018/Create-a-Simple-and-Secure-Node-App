@@ -240,3 +240,27 @@ app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });
 ```
+
+The script uses the app.set(name, value) method to assign a setting name to a value. You may store any value but some names are reserved to configure the behavior of the server. Two of those names are views and views engine.
+
+The script configures Express to use the views directory as a source for view templates. The path.join() method joins the given path segments together using the platform-specific separator as a delimiter and then normalizes the resulting path. Just below, you also configure Express to use Pug as the view engine.
+
+The GET / route controller is updated to render the index.pug template as the client response. Refresh the browser to see the new page rendered on the screen.
+The res.render(view) method takes a string view argument that represents the file path of the view file to render. It renders the file and sends the rendered HTML as a string to the client. The template file path is relative to the view directory configured earlier. The file extension for the template file defaults to .pug as Pug is the default view engine.
+
+The res.render() method takes a second, optional locals parameter, an object that lets you pass data from the controller to the template. Its object properties define local variables that can be accessed by the template. Therefore, you pass the { title: "Home" } object as a second argument of the res.render() method to define a local title variable within the index.pug template.
+
+The index.pug template doesn't use the title local variable directly but it makes it available to the template that does, layout.pug, by extending it.
+
+Refer to Using template engines with Express for further implementation details.
+
+With the page running, if you make any changes in index.pug template, you'd need to refresh the browser to see the change. Manually refreshing the browser to see changes can slow down your development process. You are going to learn how to overcome this inefficiency using BrowserSync in the next section.
+
+## dding Live Reload to Express Using Browsersync
+Front-end frameworks, such as React and Angular, use tools like Webpack and ParcelJS to provide you with an efficient development environment. For example, if you change a CSS rule on a stylesheet or the return value of a JavaScript function, the browser gets automatically refreshed to reflect the changes made when you save them. To emulate that live reload behavior easily with Express templates, you can use Browsersync.
+
+Start by installing Browsersync as follows:
+
+```
+npm install --save-dev browser-sync
+```
