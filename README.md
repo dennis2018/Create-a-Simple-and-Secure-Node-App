@@ -6,3 +6,13 @@ In this tutorial series, you'll learn how to create a secure and simple Node.js 
 Additionally, you'll learn to streamline your Node.js development workflow by using nodemon to restart the server and browser-sync to reload the browser whenever relevant source files change.
 
 ## What You Will Build
+
+To make this exercise fun and appealing, you'll build a login portal for a fictional restaurant named toodyREST that specializes in making delicious food for developerHub.
+Using server-side rendering (SSR), the web app will consist of two views: a public login screen and a protected account information screen.
+
+## Prerequisites
+- Basic understanding of Node.js and JavaScript.
+
+- A terminal app for MacOS and Linux or PowerShell for Windows.
+
+- Node.js v8+ and a Node.js package manager installed locally.
