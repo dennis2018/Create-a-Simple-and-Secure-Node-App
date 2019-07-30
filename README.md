@@ -18,3 +18,7 @@ Using server-side rendering (SSR), the web app will consist of two views: a publ
 - Node.js v8+ and a Node.js package manager installed locally.
 
 ### To install Node.js and NPM, use any of the official Node.js installers provided for your operating system.
+
+## Bootstrapping a Node.js Project
+- Create a project directory named toody-portal to hold your application, and make that your working directory:
+
