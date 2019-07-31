@@ -1,6 +1,6 @@
 # Create-a-Simple-and-Secure-Node-App
 Learn how to secure a simple Node.js and Express app by adding user authentication with Passport.js and Auth0.
-
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/browser1.PNG)
 In this tutorial series, you'll learn how to create a secure and simple Node.js application built with the Express web framework. You'll see how Passport.js with Auth0 is used to manage user authentication and protect routes. On the frontend, you'll use Pug templates for rendering views along with CSS for maintaining style sheets.
 
 Additionally, you'll learn to streamline your Node.js development workflow by using nodemon to restart the server and browser-sync to reload the browser whenever relevant source files change.
@@ -9,7 +9,7 @@ Additionally, you'll learn to streamline your Node.js development workflow by us
 
 To make this exercise fun and appealing, you'll build a login portal for a fictional restaurant named toodyREST that specializes in making delicious food for developerHub.
 Using server-side rendering (SSR), the web app will consist of two views: a public login screen and a protected account information screen.
-
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/toody%20user.PNG)
 ## Prerequisites
 - Basic understanding of Node.js and JavaScript.
 
@@ -246,6 +246,7 @@ The script uses the app.set(name, value) method to assign a setting name to a va
 The script configures Express to use the views directory as a source for view templates. The path.join() method joins the given path segments together using the platform-specific separator as a delimiter and then normalizes the resulting path. Just below, you also configure Express to use Pug as the view engine.
 
 The GET / route controller is updated to render the index.pug template as the client response. Refresh the browser to see the new page rendered on the screen.
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/start.PNG)
 The res.render(view) method takes a string view argument that represents the file path of the view file to render. It renders the file and sends the rendered HTML as a string to the client. The template file path is relative to the view directory configured earlier. The file extension for the template file defaults to .pug as Pug is the default view engine.
 
 The res.render() method takes a second, optional locals parameter, an object that lets you pass data from the controller to the template. Its object properties define local variables that can be accessed by the template. Therefore, you pass the { title: "Home" } object as a second argument of the res.render() method to define a local title variable within the index.pug template.
@@ -413,14 +414,14 @@ The updated stylesheet is using CSS variables to reuse CSS property values in ot
 CSS variables are currently not supported by Internet Explorer but they are supported by Edge!
 
 With this new stylesheet applied, the index page looks much nicer:
-
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/browser.PNG)
 To enhance the appearance of the index page, you are going to learn how to add images to your Express app and how to use them as container backgrounds.
 
 ## Adding Images to an Express App
 Just like with CSS files, you can place image files within the public directory and then reference their relative path from any element where you want to use them. You are going to use an image as the background of the div.View container present in the index.pug template.
 
 To start, right-click on the following image and save it as dev-food.jpg inside the public directory.
-
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/dev-food.jpg)
 Next, open public/style.css and append to the file a .WelcomeView class as follows:
 
 ```
@@ -435,7 +436,7 @@ Then, open views/index.pug and add this new class to the div.View container. It 
 With the url value of the background property, you are referencing the path of the image you want to use as background relative to the public directory. You also specify the position that the image should have, left bottom, and with the cover value of the background-size property, you specify that image should scale as large as possible without stretching.
 
 In the browser, you should now have this snazzy image as the background of the index page. Feel free to use any other image of your preference.
-
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/browser1.PNG)
 To prevent getting a 404 error related to the favicon in the browser, save this favicon.ico file as favicon.ico under the public directory. If the browser page or window title bar is not updated with the new favicon.ico, hard reload your browser.
 As an alternative to referencing images within the public directory, you can use the images CDN URLs.
 
@@ -491,8 +492,9 @@ Notice that the user template has a top container with the UserView class. Head 
 
 The user page will have a background image that's different than the one from the index page. Save the following image under the public directory as team.jpg:
 
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/team.jpg)
 If you visit http://localhost:3000/user directly on the browser, you'll see the user view rendered with its appropriate background with the mock user information present.
-
+![Image description](https://github.com/dennis2018/Create-a-Simple-and-Secure-Node-App/blob/master/public/toody%20user.PNG)
 # Recap
 You used Node.js, Express, Pug, and CSS to create a web application that renders a stylish user interface with dynamic data by communicating with an API. You are also serving static assets from the server hosting the API.
 
