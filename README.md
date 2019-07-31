@@ -346,3 +346,92 @@ app.use(express.static(path.join(__dirname, "public")));
 You are now using the public directory as the source of static assets. You should put inside this directory any CSS or image files that your application needs to use.
 
 ## Styling Express Templates using CSS
+Inside this same directory, create a style.css file:
+
+```
+# For macOS/Linux use:
+touch public/style.css
+# For Windows PowerShell use:
+ni public/style.css
+```
+Then, update its content as follows:
+
+```
+/* public/style.css */
+
+body {
+  background: aqua;
+}
+```
+Save your changes. To use this stylesheet, you need to link to it from the layout template file. Update layout.pug as follows:
+
+
+```
+block variables
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    link(rel="shortcut icon", href="/favicon.ico")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="theme-color", content="#000000")
+    title #{title} | toodyFOODIE
+    link(rel="stylesheet" href="/style.css")
+  body
+    div#root
+      block layout-content
+```
+Right below title, you use link to specify the relationship of the layout document with the external stylesheet.
+
+Save your changes and observe how Browersync reloads the browser and the background color of the home page turns aqua.
+
+This is the foundation of styling an Express template. You can add as many other rules as you desire. Additional CSS files would need to be linked from the document they affect.
+
+The Pug templates created have classes assigned to certain structural elements to make it easier to improve their layout and presentation. To boost the appearance of the interface, replace the content of style.css with the content presented on this Github gist.
+
+The updated stylesheet is using CSS variables to reuse CSS property values in other declarations using the var() function.
+
+```
+/* extract from public/style.css */
+
+:root {
+  --logo-font: "Share Tech Mono", monospace;
+  --header-font: "Raleway", sans-serif;
+  --core-font: "Merriweather Sans", sans-serif;
+
+  --primary: #ffffff;
+  --secondary: #2a3747;
+
+  --highlight: #fa4141;
+
+  --ui-shawdow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06),
+    0 1px 10px 0 rgba(0, 0, 0, 0.08);
+  fill: rgba(0, 0, 0, 0.54);
+  --ui-shawdow-border: 1px solid rgba(0, 0, 0, 0.14);
+}
+```
+CSS variables are currently not supported by Internet Explorer but they are supported by Edge!
+
+With this new stylesheet applied, the index page looks much nicer:
+
+To enhance the appearance of the index page, you are going to learn how to add images to your Express app and how to use them as container backgrounds.
+
+## Adding Images to an Express App
+Just like with CSS files, you can place image files within the public directory and then reference their relative path from any element where you want to use them. You are going to use an image as the background of the div.View container present in the index.pug template.
+
+To start, right-click on the following image and save it as dev-food.jpg inside the public directory.
+
+Next, open public/style.css and append to the file a .WelcomeView class as follows:
+
+```
+.WelcomeView {
+  background: url("dev-food.jpg") left bottom;
+  background-size: cover;
+}
+```
+
+Then, open views/index.pug and add this new class to the div.View container. It should now look like this: div.View.WelcomeView.
+
+With the url value of the background property, you are referencing the path of the image you want to use as background relative to the public directory. You also specify the position that the image should have, left bottom, and with the cover value of the background-size property, you specify that image should scale as large as possible without stretching.
+
+In the browser, you should now have this snazzy image as the background of the index page. Feel free to use any other image of your preference.
