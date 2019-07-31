@@ -320,3 +320,29 @@ The terminal will output information on the local and external locations where t
 Browsersync opens a new window or tab on your operating system default browser automatically to present the web app interface — if it didn't, open http://localhost:3000/.
 
 To test this setup, you can make any change on the index.pug file, save it, and watch the site served on port 3000 update itself.
+
+# Serving Static Assets with Express
+To enhance the web application views with styling and images, Express needs to be configured to access static files, such as stylesheets and images, from a project directory. For your application, use a directory named public that you can create as follows:
+
+```
+mkdir public
+```
+The express.static() built-in middleware function lets you specify the path of the directory from which to serve static assets. To mount this middleware function, you use the app.use() method. Update the content of index.js as follows to perform both tasks in one line of code:
+
+```
+// index.js
+
+// Imports and app instance
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, "public")));
+
+// Route controllers
+
+// App listening
+```
+
+You are now using the public directory as the source of static assets. You should put inside this directory any CSS or image files that your application needs to use.
+
+## Styling Express Templates using CSS
