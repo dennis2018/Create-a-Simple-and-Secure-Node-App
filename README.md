@@ -272,7 +272,7 @@ Next, you'll create an NPM script that configures and runs Browsersync to serve 
 
 ```
 {
-  "name": "whatabyte-portal",
+  "name": "toody-portal",
   "version": "1.0.0",
   "description": "",
   "main": "./index.js",
@@ -306,3 +306,17 @@ To serve the Express app user interface, run the following command in a separate
 ```
 npm run ui
 ```
+The terminal will output information on the local and external locations where the static pages are being served:
+
+```
+[Browsersync] Proxying: http://localhost:8000
+[Browsersync] Access URLs:
+ -------------------------------
+    Local: http://localhost:3000
+ External: http://<YOUR IP ADDRESS>:3000
+ -------------------------------
+[Browsersync] Watching files...
+```
+Browsersync opens a new window or tab on your operating system default browser automatically to present the web app interface — if it didn't, open http://localhost:3000/.
+
+To test this setup, you can make any change on the index.pug file, save it, and watch the site served on port 3000 update itself.
