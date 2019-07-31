@@ -435,3 +435,11 @@ Then, open views/index.pug and add this new class to the div.View container. It 
 With the url value of the background property, you are referencing the path of the image you want to use as background relative to the public directory. You also specify the position that the image should have, left bottom, and with the cover value of the background-size property, you specify that image should scale as large as possible without stretching.
 
 In the browser, you should now have this snazzy image as the background of the index page. Feel free to use any other image of your preference.
+
+To prevent getting a 404 error related to the favicon in the browser, save this favicon.ico file as favicon.ico under the public directory. If the browser page or window title bar is not updated with the new favicon.ico, hard reload your browser.
+As an alternative to referencing images within the public directory, you can use the images CDN URLs.
+
+## Creating Additional Views with Express and Pug
+For practice, you are going to add an additional view to your application that shows user profile information. Because this view will hold private information, it should only be accessed only by an authenticated and authorized user. In the next part of this tutorial, you will learn how to protect routes in the section that implements Node.js and Express authentication using Passport.js with Auth0.
+
+Under, the views directory, create a Pug template file named user.pug:
