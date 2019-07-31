@@ -443,3 +443,59 @@ As an alternative to referencing images within the public directory, you can use
 For practice, you are going to add an additional view to your application that shows user profile information. Because this view will hold private information, it should only be accessed only by an authenticated and authorized user. In the next part of this tutorial, you will learn how to protect routes in the section that implements Node.js and Express authentication using Passport.js with Auth0.
 
 Under, the views directory, create a Pug template file named user.pug:
+
+```
+# For macOS/Linux use:
+touch views/user.pug
+# For Windows PowerShell use:
+ni views/user.pug
+```
+Populate this new template with the following:
+
+```
+extends layout
+
+block layout-content
+  div.View.UserView
+    h1.Banner Howdy, #{userProfile.nickname}!
+    div.Message
+      div.Title
+        h3 Making Us the Best
+        h1 Teammate Profile
+      pre.Details=JSON.stringify(userProfile, null, 2)
+    div.NavButtons
+      a(href="/logout")
+        div.NavButton Log out
+```
+
+The button on this template will be in charge of logging the user out. The local userProfile variable will be provided to this view by the route controller that renders it. To create that controller, open index.js and add the following route definition right below the GET / endpoint:
+
+```
+// index.js
+
+// Imports, app variables, and settings code...
+
+app.get("/", (req, res) => {
+  res.render("index", { title: "Home" });
+});
+
+app.get("/user", (req, res) => {
+  res.render("user", { title: "Profile", userProfile: { nickname: "Auth0" } });
+});
+
+// Rest of the code...
+```
+You are using the second parameter of the res.render() method to pass mock data to the user template for it to render without errors. In the next part of this tutorial, you'll pass actual data coming from an authentication server.
+
+Notice that the user template has a top container with the UserView class. Head back to public/style.css and add that class definition below the .WelcomeView one:
+
+The user page will have a background image that's different than the one from the index page. Save the following image under the public directory as team.jpg:
+
+If you visit http://localhost:3000/user directly on the browser, you'll see the user view rendered with its appropriate background with the mock user information present.
+
+# Recap
+You used Node.js, Express, Pug, and CSS to create a web application that renders a stylish user interface with dynamic data by communicating with an API. You are also serving static assets from the server hosting the API.
+
+With the foundation of this web app in good shape, it's time to learn how to add authentication to it which allows you to create a secure and solid user experience for your customers. You'll learn how to do that along with logging in and logging out users in the second part of this tutorial using Passport.js and Auth0.
+
+# YOU MADE IT!! NOW VISIT Create-a-Simple-and-Secure-Node-App-Part-2
