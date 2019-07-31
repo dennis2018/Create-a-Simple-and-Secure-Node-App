@@ -256,11 +256,53 @@ Refer to Using template engines with Express for further implementation details.
 
 With the page running, if you make any changes in index.pug template, you'd need to refresh the browser to see the change. Manually refreshing the browser to see changes can slow down your development process. You are going to learn how to overcome this inefficiency using BrowserSync in the next section.
 
-## dding Live Reload to Express Using Browsersync
+## Adding Live Reload to Express Using Browsersync
 Front-end frameworks, such as React and Angular, use tools like Webpack and ParcelJS to provide you with an efficient development environment. For example, if you change a CSS rule on a stylesheet or the return value of a JavaScript function, the browser gets automatically refreshed to reflect the changes made when you save them. To emulate that live reload behavior easily with Express templates, you can use Browsersync.
 
 Start by installing Browsersync as follows:
 
 ```
 npm install --save-dev browser-sync
+```
+Next, you'll create an NPM script that configures and runs Browsersync to serve your web application. Open and update package.json with the following ui NPM script:
+
+```
+"ui": "browser-sync start --proxy=localhost:8000 --files='**/*.css, **/*.pug, **/*.js' --ignore=node_modules --reload-delay 10 --no-ui --no-notify"
+```
+
+```
+{
+  "name": "whatabyte-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "ui": "browser-sync start --proxy=localhost:8000 --files='**/*.css, **/*.pug, **/*.js' --ignore=node_modules --reload-delay 10 --no-ui --no-notify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {...},
+  "dependencies": {...}
+}
+```
+The ui script uses a couple of Browsersync command line options to configure the behavior of Browsersync:
+
+browser-sync start --proxy=localhost:8000: Proxy the Node/Express app served on localhost:8000 as Browsersync only creates a static server for basic HTML/JS/CSS websites. You still need to run the server with nodemon separately.
+
+--files='**/*.css, **/*.pug, **/*.js': Using glob patterns, specify the file paths to watch. You'll watch CSS, Pug, and JavaScript files.
+
+--ignore=node_modules: Specify the patterns that file watchers need to ignore. You want to ignore node_module to let Browsersync run fast.
+
+--reload-delay 10: Time in milliseconds to delay the reload event following file changes. Ten milliseconds is enough to prevent Nodemon and Browsersync from overlapping which can cause erratic behavior.
+
+--no-ui: Don't start the Browsersync user interface, a page where you can control the behavior of Browsersync.
+
+--no-notify: Disable the notify element in browsers. This prevents a distracting message notifying you that Browsersync is connected to the browser from showing up.
+
+To serve the Express app user interface, run the following command in a separate terminal tab or window:
+
+```
+npm run ui
 ```
